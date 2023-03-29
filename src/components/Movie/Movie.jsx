@@ -2,15 +2,28 @@ import React from 'react';
 import { FaRegBookmark} from 'react-icons/fa';
 import { BsFillBookmarkCheckFill} from 'react-icons/bs';
 const Movie = ({movie,addtoLocalStorage}) => {
-
+   
+ 
    const {movieName,poster,watchTime,imdbRating,description}=movie
+   let sum=0;
+   function bookmarkadd(){
+    const stored=JSON.parse(localStorage.getItem("watch-time"))
+    if(stored){
+     sum=stored+watchTime;
+     localStorage.setItem("watch-time",sum)
+    }
+    else{
+        localStorage.setItem("watch-time",watchTime)
+    }
+    
+}
     return (
         <>
            <div className="card card-compact border-4 w-80 p-4 m-3 text-white bg-[#66347F] my-4 shadow-xl">
            <div className='text-white flex gap-60'>
             <FaRegBookmark/>
             {/* <BsBookFill/> */}
-            <span >
+            <span onClick={bookmarkadd}>
             <BsFillBookmarkCheckFill />
             </span>
           

@@ -7,6 +7,8 @@ import Movies from './components/Movies/Movies';
 const App = () => {
   const [time,setTime]=useState(0)
   let sum=0
+
+  // set to local storage
   function addtoLocalStorage(time){
     const storedData=JSON.parse(localStorage.getItem("watch-time"))
     if(storedData){
